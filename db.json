@@ -11,8 +11,8 @@
       "Name": "Amrood",
       "FatherName": "Aiia",
       "MotherName": "asd",
-      "lastscore": 12,
-      "DOB": "1899-11-12",
+      "lastscore": 61,
+      "DOB": "1999-11-25",
       "documentOptions": {
         "Domicile": true,
         "Marksheets": true,
@@ -42,10 +42,10 @@
     },
     {
       "CategoryOption": "Domestic",
-      "Name": "Rabbitb",
+      "Name": "Rabbit Paul",
       "FatherName": "Bada Rabbit",
       "MotherName": "Badi Rabbit",
-      "lastscore": 12,
+      "lastscore": 47,
       "DOB": "1999-12-12",
       "documentOptions": {
         "Domicile": true,
@@ -73,6 +73,23 @@
         "Declaration": true
       },
       "id": 6
+    },
+    {
+      "CategoryOption": "International",
+      "Name": "Demo Student",
+      "FatherName": "Demos Father",
+      "MotherName": "Demos Mother",
+      "lastscore": 45,
+      "DOB": "1992-11-12",
+      "documentOptions": {
+        "Domicile": true,
+        "Marksheets": true,
+        "Birth Certificate": true,
+        "Police Clearance": true,
+        "Passport": true,
+        "Declaration": true
+      },
+      "id": 7
     }
   ]
 }

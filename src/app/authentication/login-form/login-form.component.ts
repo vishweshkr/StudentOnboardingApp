@@ -32,7 +32,7 @@ username;
         }
         else{
           this.error="Bad login request";
-          console.log('nonon');
+          
         }
       });
 

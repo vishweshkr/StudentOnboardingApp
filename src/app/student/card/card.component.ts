@@ -25,7 +25,7 @@ export class CardComponent implements OnInit {
   }
 
   showDetail(){
-    //this.viewStudent.emit(this.data);
+   
     this.formdataService.isread  = true;
     this.formdataService.student = this.data;
     this.router.navigateByUrl('register/'+this.data.id);
@@ -39,7 +39,7 @@ export class CardComponent implements OnInit {
   }
 
   getColor(): string{
-    return this.data.CategoryOption === "Domestic" ? "#f5f2d0" : "white";
+    return this.data.CategoryOption === "Domestic" ? "#f5f2d0" : "#ecfcf0";
  }
 
 

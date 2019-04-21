@@ -3,7 +3,8 @@ import {FormGroup,FormControl,FormBuilder,FormArray,Validators} from '@angular/f
 import {LastScoreValidator, validateControl,dobValidator} from './validator/form-validator';
 import { APIService } from 'src/app/core/AppServices/api.service';
 import { FormDataService } from 'src/app/core/AppServices/FormData/form-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+ 
 
 @Component({
   selector: 'registration-form',
@@ -33,7 +34,7 @@ export class RegistrationFormComponent implements OnInit {
   isRead: boolean;
   noStudent: boolean;
   constructor(private formBuilder: FormBuilder,private apiService: APIService,
-    private formDataService: FormDataService, private route:ActivatedRoute) { 
+    private formDataService: FormDataService, private route:ActivatedRoute,private router:Router) { 
     
 
 
@@ -114,6 +115,7 @@ export class RegistrationFormComponent implements OnInit {
     this.apiService.update(this.selectedStudent.id,this.registrationForm.value).subscribe(
       (val) => {
       this.registrationForm.reset();
+      this.router.navigateByUrl('/');
       }
     );
   }
@@ -121,6 +123,7 @@ export class RegistrationFormComponent implements OnInit {
   this.apiService.register(this.registrationForm.value).subscribe(
     (val) => {
     this.registrationForm.reset();
+    this.router.navigateByUrl('/');
     }
   );
 }

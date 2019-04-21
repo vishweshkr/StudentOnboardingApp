@@ -18,7 +18,9 @@ export class DisplayAllComponent implements OnInit {
   devices = 'All Domestic International'.split(' ');
   selectedDevice;
 
-  constructor(private apiService: APIService, private dataService: FormDataService, private router: Router) { }
+  constructor(private apiService: APIService, private dataService: FormDataService, private router: Router) { 
+    this.filterText = 'All';
+  }
 
   ngOnInit() {
     this.getAllStudents();

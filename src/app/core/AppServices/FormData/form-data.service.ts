@@ -12,7 +12,7 @@ export class FormDataService {
   constructor(private api: APIService) { }
 
   getStudent(id: number){
-    console.log(this.studentData);
+   
     if(this.studentData){
       return of([this.studentData]);
     }

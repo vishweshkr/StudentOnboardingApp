@@ -1,6 +1,6 @@
 <!-- Filter and Search -->
-<nav class="navbar navbar-lg navbar-light bg">
-    <div class="collapse navbar" id="navbarTogglerDemo02">
+<nav class="navbar navbar-expand-lg navbar-light bg">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <select class="form-control" [(ngModel)]="filterText" name="filter" (ngModelChange)="onChange($event)">
                 <option class="dropdown-item" [value]="i" *ngFor="let i of devices">{{i}}</option>
