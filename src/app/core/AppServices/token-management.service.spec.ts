@@ -13,12 +13,12 @@ describe('TokenManagementService', () => {
 
 
   it('should authenticate true', inject([TokenManagementService], (service: TokenManagementService) => {
-    service.authenticate(true);
+    service.authenticate(true,'');
     expect(service.isAuthenticated).toBeTruthy();
   }));
   
   it('should un-authenticate', inject([TokenManagementService], (service: TokenManagementService) => {
-    service.authenticate(false);
+    service.authenticate(false,'');
     expect(service.isAuthenticated).toBeFalsy();
   })); 
    

@@ -2,17 +2,14 @@ import { TestBed,async } from '@angular/core/testing';
 
 import { FormDataService } from './form-data.service';
 import { APIService } from '../api.service';
+import { HttpClientModule } from '@angular/common/http';
 
-describe('AppComponent', () => {
+describe('FormDataService', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        
-        APIService
-      ],
-      declarations: [
-        FormDataService
-      ],
+      imports: [HttpClientModule],
+      declarations: [],
+      providers: [APIService]
     }).compileComponents();
   }));
 

@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegistrationFormComponent } from './registration-form.component';
 import { RouterTestingModule } from '@angular/router/testing';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('RegistrationFormComponent', () => {
   let component: RegistrationFormComponent;
@@ -11,9 +11,8 @@ describe('RegistrationFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[RouterTestingModule],
+      imports:[RouterTestingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
       declarations: [ RegistrationFormComponent
-     
       ]
     })
     .compileComponents();
