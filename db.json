@@ -41,25 +41,25 @@
       "id": 2
     },
     {
-      "documentOptions": {
-        "Domicile": false,
-        "Marksheets": true,
-        "Birth Certificate": false,
-        "Police Clearance": false,
-        "Passport": false,
-        "Declaration": false
-      },
       "CategoryOption": "Domestic",
-      "Name": "Rabbit",
+      "Name": "Rabbitb",
       "FatherName": "Bada Rabbit",
       "MotherName": "Badi Rabbit",
       "lastscore": 12,
       "DOB": "1999-12-12",
+      "documentOptions": {
+        "Domicile": true,
+        "Marksheets": true,
+        "Birth Certificate": true,
+        "Police Clearance": false,
+        "Passport": false,
+        "Declaration": true
+      },
       "id": 3
     },
     {
       "CategoryOption": "International",
-      "Name": "Rampur",
+      "Name": "Rampuriya",
       "FatherName": "Mathur",
       "MotherName": "Mathurji",
       "lastscore": 24,

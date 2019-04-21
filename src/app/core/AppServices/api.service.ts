@@ -4,53 +4,54 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ILogin } from '../models';
 import { map } from 'rxjs/operators';
 import { TokenManagementService } from './token-management.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class APIService {
-
-  constructor(private http:HttpClient,private tokenService:TokenManagementService) { 
+  baseUrl = environment.apiBaseUrl;
+  studentsAPI = 'students';
+  constructor(private http: HttpClient, private tokenService: TokenManagementService) {
 
   }
 
-  register(student) : Observable<any>{
-    return this.http.post('http://localhost:3000/students',student);
+  register(student): Observable<any> {
+    return this.http.post(this.baseUrl + this.studentsAPI, student);
   }
 
-  update(id,student) : Observable<any>{
+  update(id, student): Observable<any> {
 
-    return this.http.put('http://localhost:3000/students/'+id,student);
+    return this.http.put(this.baseUrl + this.studentsAPI + '/' + id, student);
   }
 
-  getAllStudents(){
-    return this.http.get('http://localhost:3000/students');
+  getAllStudents() {
+    return this.http.get(this.baseUrl + this.studentsAPI);
   }
 
   geStudentById(id: number) {
-    return this.http.get('http://localhost:3000/students?id='+id);
+    return this.http.get(this.baseUrl + this.studentsAPI + '?id=' + id);
   }
 
-  deleteStudent(id:number): Observable<any>{
+  deleteStudent(id: number): Observable<any> {
     debugger;
-    return this.http.delete('http://localhost:3000/students/'+id);
+    return this.http.delete(this.baseUrl + this.studentsAPI + '/' + id);
   }
 
-  IsAuthenticated(login:ILogin){
-    return this.http.get('http://localhost:3000/auth?username='+login.username+'&password='+login.password)
-    .pipe(map((res: ILogin[]) => {
-      if(res && res.length)
-       {
-         this.tokenService.authenticate(true,login.username);
-       }
-      return res;
-    }));
-    
+  IsAuthenticated(login: ILogin) {
+    return this.http.get(this.baseUrl + 'auth?username=' + login.username + '&password=' + login.password)
+      .pipe(map((res: ILogin[]) => {
+        if (res && res.length) {
+          this.tokenService.authenticate(true, login.username);
+        }
+        return res;
+      }));
+
   }
 
-  logout(){
-    
-    return this.tokenService.authenticate(false,"");
+  logout() {
+
+    return this.tokenService.authenticate(false, "");
   }
 
 }

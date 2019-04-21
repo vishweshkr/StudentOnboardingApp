@@ -15,14 +15,10 @@ export class AppComponent {
 
   }
   ngOnInit(){
-    // console.log(this.isNotAuth );
-    this.service.checkAuthentication();
     this.service.isUserAuthenticated.subscribe((auth) => {
-      this.isAuth = auth;
+      this.isAuth = auth || false;
     });
-    // if(this.service.getToken() || this.service.getToken() ==="")
-    // this.isNotAuth=true;
-    // console.log(this.isNotAuth );
+    this.service.checkAuthentication();
   }
 }
 
