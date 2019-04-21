@@ -1,0 +1,49 @@
+<!-- Filter and Search -->
+<nav class="navbar navbar-expand-lg navbar-light bg">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <select class="form-control" [(ngModel)]="filterText" name="filter" (ngModelChange)="onChange($event)">
+                <option class="dropdown-item" [value]="i" *ngFor="let i of devices">{{i}}</option>
+            </select>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="search" [(ngModel)]="searchText" placeholder="Type to name search..">
+            </form>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- Student List -->
+<div class="FullBlock">
+    <div class="card-columns">
+        <app-card *ngFor="let student of studentList |  search: {searchText : searchText } | filter :{FilterText : filterText} " [data]="student" class="card-elem" (viewStudent)="showStudent($event)"></app-card>
+    </div>
+</div>
+
+<app-modal [title]="selectedStudent?.Name" [modalTemplate]="popupTemp" [show]="showModal" (close)="showModal=!showModal">
+  <ng-template #popupTemp>
+    <h6 class="card-subtitle mb-2 text-muted">
+      {{selectedStudent?.CategoryOption}}
+  </h6>
+  <div>
+    Father's Name : {{selectedStudent?.FatherName}}
+  </div>
+
+  <div >
+  Mother's Name : {{selectedStudent?.MotherName}}
+  </div>
+  <div >
+  Category : {{selectedStudent?.CategoryOption}}
+  </div>
+  <div>Available documents :
+    <div *ngFor=" let key of documentKeys">
+      <ng-container *ngIf="selectedStudent.documentOptions[key]">
+        {{key}}
+      </ng-container>
+    </div>
+  </div>
+  <button (click)="deleteRecord(selectedStudent)">YES</button>
+  </ng-template>
+</app-modal>

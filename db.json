@@ -1,0 +1,78 @@
+{
+  "auth": [
+    {
+      "username": "admin",
+      "password": "admin"
+    }
+  ],
+  "students": [
+    {
+      "CategoryOption": "International",
+      "Name": "Amrood",
+      "FatherName": "Aiia",
+      "MotherName": "asd",
+      "lastscore": 12,
+      "DOB": "1899-11-12",
+      "documentOptions": {
+        "Domicile": true,
+        "Marksheets": true,
+        "Birth Certificate": true,
+        "Police Clearance": true,
+        "Passport": true,
+        "Declaration": true
+      },
+      "id": 1
+    },
+    {
+      "CategoryOption": "Domestic",
+      "Name": "Rabbit",
+      "FatherName": "Bada Rabbit",
+      "MotherName": "Badi Rabbit",
+      "lastscore": 12,
+      "DOB": "1999-12-12",
+      "documentOptions": {
+        "Domicile": true,
+        "Marksheets": true,
+        "Birth Certificate": true,
+        "Police Clearance": false,
+        "Passport": false,
+        "Declaration": true
+      },
+      "id": 2
+    },
+    {
+      "documentOptions": {
+        "Domicile": false,
+        "Marksheets": true,
+        "Birth Certificate": false,
+        "Police Clearance": false,
+        "Passport": false,
+        "Declaration": false
+      },
+      "CategoryOption": "Domestic",
+      "Name": "Rabbit",
+      "FatherName": "Bada Rabbit",
+      "MotherName": "Badi Rabbit",
+      "lastscore": 12,
+      "DOB": "1999-12-12",
+      "id": 3
+    },
+    {
+      "CategoryOption": "International",
+      "Name": "Rampur",
+      "FatherName": "Mathur",
+      "MotherName": "Mathurji",
+      "lastscore": 24,
+      "DOB": "1999-11-12",
+      "documentOptions": {
+        "Domicile": true,
+        "Marksheets": true,
+        "Birth Certificate": true,
+        "Police Clearance": true,
+        "Passport": true,
+        "Declaration": true
+      },
+      "id": 6
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<div class="card "  [ngStyle]="{'background-color': getColor()}" style="width: 18rem; ">
+  
+  <div class="card-body">
+    <h5 class="card-title">{{data.Name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{data.CategoryOption}}</h6>
+    <p class="card-text">
+        Father's Name : {{data.FatherName}}
+    </p>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary" (click)="showDetail()">View</button>
+      <button type="button" class="btn btn-primary" (click)="editDetail()">Edit</button>
+      <button type="button" class="btn btn-primary" (click)="deleteDetail()">Delete</button>
+    </div>
+  </div>
+</div>

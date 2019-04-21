@@ -1,0 +1,73 @@
+<div style="padding: 2%">
+<form *ngIf="!noStudent" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div class="form-group row">
+    <label for="Student Name" class="col-sm-2 col-form-label">Student Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': registrationForm.controls.Name?.errors}" placeholder="Student name" formControlName="Name">
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="text" class="col-sm-2 col-form-label" >Category</label>
+    <div class="col-sm-10">
+      <select class="form-control" formControlName="CategoryOption">
+        <option  *ngFor="let obj of CategoryOptions" [value]="obj.text">{{obj.text}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+      <div class="col-sm-2">Documents</div>
+      <div class="col-sm-10">
+        <div class="form-check" formArrayName="documentOptions" *ngFor="let name of registrationForm.controls.documentOptions.controls; let i = index">
+          <input class="form-check-input" value="documentOptions[i].id"  id="{{documentOptions[i].name}}"  type="checkbox" [formControlName]="i" >
+          <label class="form-check-label" for="{{documentOptions[i].name}}">{{documentOptions[i].name}}</label>
+          <span *ngIf=" registrationForm.controls.CategoryOption?.value=='International'" style="color:red"> * </span>
+          <span *ngIf=" registrationForm.controls.CategoryOption?.value=='Domestic' && i!=3 && i!=4 " style="color:red"> * </span>
+        </div>
+      </div>
+    </div>
+
+  <div class="form-group row">
+      <label for="fathername" class="col-sm-2 col-form-label">Father's Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': registrationForm.controls.FatherName?.errors}"  placeholder="Father's  name" formControlName="FatherName">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="mothername" class="col-sm-2 col-form-label">Mother's Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': registrationForm.controls.MotherName?.errors}"  placeholder="Mother's  name" formControlName="MotherName">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="lastscore" class="col-sm-2 col-form-label">Last Class Score</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control"  [ngClass]="{'is-invalid': registrationForm.controls.lastscore?.errors}" placeholder="Enter in %"  formControlName="lastscore" value="-1">
+        <!-- <span *ngIf="registrationForm.controls.lastscore.dirty && registrationForm.controls.lastscore.errors?.invalid">Enter a valid last score</span> -->
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="DOB" class="col-sm-2 col-form-label">Date of Birth</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control"  [ngClass]="{'is-invalid': registrationForm.controls.DOB?.errors}" placeholder="dd/MM/YYYY"  formControlName="DOB">
+          
+        </div>
+      </div>
+
+      <div class="form-group row">
+      <span style ="color:red" *ngIf="!registrationForm.valid">* Marked field are Mandatory</span>
+      </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid">{{selectedStudent ? isRead===true?'View Form Mode':'Update Details' : 'Submit and Onboard'}}</button>
+    </div>
+  </div>
+
+
+</form>
+</div>
+
+
+<div *ngIf="noStudent">No Student Found</div>
+
