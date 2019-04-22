@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { ILogin } from '../models';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
 import { TokenManagementService } from './token-management.service';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
@@ -37,11 +37,12 @@ export class APIService {
     const editStudent = students.filter((student)=>student.id===id)[0];
     const index=students.indexOf(editStudent);
     students.splice(index,1);
+    students.splice(index,0,student);
+    window.localStorage.setItem(this.studentsAPI, JSON.stringify(students));
 
-    return this.http.put(this.baseUrl + this.studentsAPI + '/' + id, student).pipe(map((data) => { 
-      students.splice(index,0,data);
-      window.localStorage.setItem(this.studentsAPI, JSON.stringify(students));
-      return data;
+    return this.http.put(this.baseUrl + this.studentsAPI + '/' + id, student).pipe(catchError((data) => { 
+    
+      return of(students);
     }));
   }
 
@@ -80,24 +81,16 @@ export class APIService {
   deleteStudent(id: number): Observable<any> {
     let students = JSON.parse(window.localStorage.getItem(this.studentsAPI));
     if(!students){ 
-     students = [];
+      students = [];
     }
     const editStudent = students.filter((student)=>student.id===id)[0];
     const index=students.indexOf(editStudent);
     students.splice(index,1);
-    console.log(id);
-    try{
-    return this.http.delete(this.baseUrl + this.studentsAPI + '/' + id).pipe(map((data) => { 
-    
-      window.localStorage.setItem(this.studentsAPI, JSON.stringify(students));
-      return data;
+    window.localStorage.setItem(this.studentsAPI, JSON.stringify(students));
+
+    return this.http.delete(this.baseUrl + this.studentsAPI + '/' + id).pipe(catchError((data) => {
+      return of(students);
     }));
-  }
-  catch(error){
-    console.log(error);
-    return of({});
-  }
-   
   }
 
   IsAuthenticated(login: ILogin) {

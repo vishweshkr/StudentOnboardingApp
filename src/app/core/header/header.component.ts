@@ -11,10 +11,17 @@ import { TokenManagementService} from '../AppServices/token-management.service'
 export class HeaderComponent implements OnInit {
 
   @Input() username;
-  constructor(private apiservice:APIService,private router:Router,private token:TokenManagementService) { }
+  isRegisterUrl= false;
+  constructor(private apiservice:APIService,public router:Router,private token:TokenManagementService) { }
 
   ngOnInit() {
     this.username=this.token.getUsername();
+
+    let path=window.location.pathname;
+
+    if(!path.indexOf('students')){
+      this.isRegisterUrl=true;
+    }
   }
 
   logout(){
