@@ -8,9 +8,9 @@
   "students": [
     {
       "CategoryOption": "International",
-      "Name": "Amrood",
-      "FatherName": "Aiia",
-      "MotherName": "asd",
+      "Name": "Alfred Donzga",
+      "FatherName": "Arian Donzga",
+      "MotherName": "Mary Donzga",
       "lastscore": 61,
       "DOB": "1999-11-25",
       "documentOptions": {
@@ -25,10 +25,10 @@
     },
     {
       "CategoryOption": "Domestic",
-      "Name": "Rabbit",
-      "FatherName": "Bada Rabbit",
-      "MotherName": "Badi Rabbit",
-      "lastscore": 12,
+      "Name": "Amit Shah",
+      "FatherName": "Motilal Shah",
+      "MotherName": "Rami Shah",
+      "lastscore": 45,
       "DOB": "1999-12-12",
       "documentOptions": {
         "Domicile": true,
@@ -42,9 +42,9 @@
     },
     {
       "CategoryOption": "Domestic",
-      "Name": "Rabbit Paul",
-      "FatherName": "Bada Rabbit",
-      "MotherName": "Badi Rabbit",
+      "Name": "Mean Paul",
+      "FatherName": "Although Paul",
+      "MotherName": "Extra Paul",
       "lastscore": 47,
       "DOB": "1999-12-12",
       "documentOptions": {
@@ -59,9 +59,9 @@
     },
     {
       "CategoryOption": "International",
-      "Name": "Rampuriya",
-      "FatherName": "Mathur",
-      "MotherName": "Mathurji",
+      "Name": "Adrian Gee",
+      "FatherName": "Mathur Gee",
+      "MotherName": "Pamela Gee",
       "lastscore": 50,
       "DOB": "1999-11-12",
       "documentOptions": {
@@ -76,9 +76,9 @@
     },
     {
       "CategoryOption": "International",
-      "Name": "Demo Student",
-      "FatherName": "Demos Father",
-      "MotherName": "Demos Mother",
+      "Name": "Robin Singh",
+      "FatherName": "Mohin Singh",
+      "MotherName": "Mohini Singh",
       "lastscore": 45,
       "DOB": "1992-11-12",
       "documentOptions": {
@@ -93,9 +93,9 @@
     },
     {
       "CategoryOption": "Domestic",
-      "Name": "test student",
-      "FatherName": "test father",
-      "MotherName": "test mother",
+      "Name": "Ecstatic Sharma",
+      "FatherName": "Enthusiastic Sharma",
+      "MotherName": "Sorrow Sharma",
       "lastscore": 78,
       "DOB": "1992-11-12",
       "documentOptions": {

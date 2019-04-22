@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenManagementService } from 'src/app/core/AppServices/token-management.service';
+import { Constants } from 'src/app/core/constants';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class ContainerComponent implements OnInit {
   constructor(private tokenService: TokenManagementService) { }
 
   ngOnInit() {
-    this.tokenService.authenticate(false, '');
+    this.tokenService.authenticate(false, Constants.blankValue);
     
   }
 

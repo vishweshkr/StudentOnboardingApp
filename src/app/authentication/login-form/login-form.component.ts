@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ILogin, Login } from 'src/app/core/models';
 import { APIService } from 'src/app/core/AppServices/api.service';
 import { Router } from '@angular/router';
+import { Constants } from 'src/app/core/constants';
 
 @Component({
   selector: 'app-login-form',
@@ -17,7 +18,7 @@ username;
   constructor(private apiService:APIService,private router:Router) { }
 
   ngOnInit() {
-    this.error="";
+    this.error=Constants.blankValue;
   }
 
   onSubmit(){
@@ -27,11 +28,11 @@ username;
         {
           this.username=(response[0].username);
     
-          this.router.navigateByUrl('/students');
+          this.router.navigateByUrl(Constants.studentURL);
          
         }
         else{
-          this.error="Bad login request";
+          this.error=Constants.error;
           
         }
       });

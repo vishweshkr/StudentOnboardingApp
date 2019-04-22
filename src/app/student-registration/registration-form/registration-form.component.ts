@@ -4,7 +4,7 @@ import {LastScoreValidator, validateControl,dobValidator} from './validator/form
 import { APIService } from 'src/app/core/AppServices/api.service';
 import { FormDataService } from 'src/app/core/AppServices/FormData/form-data.service';
 import { Router,ActivatedRoute } from '@angular/router';
- 
+import {Constants} from '../../core/constants'
 
 @Component({
   selector: 'registration-form',
@@ -16,19 +16,9 @@ export class RegistrationFormComponent implements OnInit {
 
   registrationForm: FormGroup;
   
-  documentOptions   = [
-    { id: 1, name: 'Domicile' },
-    { id: 2, name: 'Marksheets' },
-    { id: 3, name: 'Birth Certificate' },
-    { id: 4, name: 'Police Clearance' },
-    { id: 5, name: 'Passport' },
-    { id: 6, name: 'Declaration' }
-  ];
+  documentOptions   = Constants.documentOptions
 
-  CategoryOptions=[
-    {text:"Domestic",id:1},
-    {text:"International",id:2}
-  ];
+  CategoryOptions=Constants.categoryOptions
   selectedStudent;
   isEdit: boolean;
   isRead: boolean;

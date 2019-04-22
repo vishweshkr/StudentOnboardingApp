@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormDataService } from '../../core/AppServices/FormData/form-data.service'
 import { Router } from '@angular/router';
-
+import {Constants} from '../../core/constants'
 
 @Component({
   selector: 'app-card',
@@ -15,8 +15,8 @@ export class CardComponent implements OnInit {
   @Output() viewStudent = new EventEmitter();
 
 
-  backcolor:string
-
+  backcolor:string;
+  
   constructor(private formdataService: FormDataService,private router:Router) {
    
    }
@@ -28,18 +28,18 @@ export class CardComponent implements OnInit {
    
     this.formdataService.isread  = true;
     this.formdataService.student = this.data;
-    this.router.navigateByUrl('register/'+this.data.id);
+    this.router.navigateByUrl(Constants.registerURL+this.data.id);
   
   }
 
   editDetail(){
     this.formdataService.student = this.data;
     this.formdataService.isEdit  = true;
-    this.router.navigateByUrl('register/'+this.data.id);
+    this.router.navigateByUrl(Constants.registerURL+this.data.id);
   }
 
   getColor(): string{
-    return this.data.CategoryOption === "Domestic" ? "#f5f2d0" : "#ecfcf0";
+    return this.data.CategoryOption === Constants.domestic ? Constants.Offwhite : Constants.Offyellow;
  }
 
 

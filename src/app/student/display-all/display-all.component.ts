@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/core/AppServices/api.service';
 import { FormDataService } from 'src/app/core/AppServices/FormData/form-data.service';
 import { Router } from '@angular/router';
+import { Constants } from 'src/app/core/constants';
 
 @Component({
   selector: 'app-display-all',
@@ -15,7 +16,7 @@ export class DisplayAllComponent implements OnInit {
   searchText: string;
   filterText: string;
   documentKeys: any[]
-  devices = 'All Domestic International'.split(' ');
+  devices = Constants.decumentString.split(' ');
   selectedDevice;
 
   constructor(private apiService: APIService, private dataService: FormDataService, private router: Router) { 
