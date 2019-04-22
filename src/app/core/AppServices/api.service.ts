@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { ILogin } from '../models';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { TokenManagementService } from './token-management.service';
 import { environment } from 'src/environments/environment';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,25 +18,80 @@ export class APIService {
   }
 
   register(student): Observable<any> {
-    return this.http.post(this.baseUrl + this.studentsAPI, student);
+    let students = JSON.parse(window.localStorage.getItem(this.studentsAPI));
+    if(!students){ 
+     students = [];
+    }
+    return this.http.post(this.baseUrl + this.studentsAPI, student).pipe(map((data) => { 
+      students.push(data);
+      window.localStorage.setItem(this.studentsAPI, JSON.stringify(students));
+      return data;
+    }));
   }
 
   update(id, student): Observable<any> {
+    let students = JSON.parse(window.localStorage.getItem(this.studentsAPI));
+    if(!students){ 
+     students = [];
+    }
+    const editStudent = students.filter((student)=>student.id===id)[0];
+    const index=students.indexOf(editStudent);
+    students.splice(index,1);
 
-    return this.http.put(this.baseUrl + this.studentsAPI + '/' + id, student);
+    return this.http.put(this.baseUrl + this.studentsAPI + '/' + id, student).pipe(map((data) => { 
+      students.splice(index,0,data);
+      window.localStorage.setItem(this.studentsAPI, JSON.stringify(students));
+      return data;
+    }));
   }
 
   getAllStudents() {
-    return this.http.get(this.baseUrl + this.studentsAPI);
+    const students = window.localStorage.getItem(this.studentsAPI);
+    if(!students){
+      
+      return this.http.get(this.baseUrl + this.studentsAPI).pipe(map((data) => { 
+        window.localStorage.setItem(this.studentsAPI, JSON.stringify(data));
+        return data;
+      }));
+      
+    }
+    return of(JSON.parse(students)); 
   }
 
+
   geStudentById(id: number) {
-    return this.http.get(this.baseUrl + this.studentsAPI + '?id=' + id);
+
+
+    let students = JSON.parse(window.localStorage.getItem(this.studentsAPI));
+    if(students){
+
+    const localStudent = students.filter( (student) => student.id == id)[0];
+    
+    return of([localStudent]);
+   
+    }
+    else{
+    return this.http.get(this.baseUrl + this.studentsAPI + '?id=' + id);
+    } 
+
+
   }
 
   deleteStudent(id: number): Observable<any> {
-    debugger;
-    return this.http.delete(this.baseUrl + this.studentsAPI + '/' + id);
+    let students = JSON.parse(window.localStorage.getItem(this.studentsAPI));
+    if(!students){ 
+     students = [];
+    }
+    const editStudent = students.filter((student)=>student.id===id)[0];
+    const index=students.indexOf(editStudent);
+    students.splice(index,1);
+
+    return this.http.delete(this.baseUrl + this.studentsAPI + '/' + id).pipe(map((data) => { 
+    
+      window.localStorage.setItem(this.studentsAPI, JSON.stringify(students));
+      return data;
+    }));
+   
   }
 
   IsAuthenticated(login: ILogin) {
@@ -50,7 +106,7 @@ export class APIService {
   }
 
   logout() {
-
+    window.localStorage.clear();
     return this.tokenService.authenticate(false, "");
   }
 

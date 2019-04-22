@@ -31,7 +31,8 @@ export class DisplayAllComponent implements OnInit {
   }
 
   private getAllStudents() {
-    this.apiService.getAllStudents().subscribe((response) => {
+    this.apiService.getAllStudents()
+    .subscribe((response) => {
       this.studentList = <any[]>response;
     });
   }

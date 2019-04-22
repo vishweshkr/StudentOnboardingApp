@@ -62,7 +62,7 @@
       "Name": "Rampuriya",
       "FatherName": "Mathur",
       "MotherName": "Mathurji",
-      "lastscore": 24,
+      "lastscore": 50,
       "DOB": "1999-11-12",
       "documentOptions": {
         "Domicile": true,
@@ -90,6 +90,23 @@
         "Declaration": true
       },
       "id": 7
+    },
+    {
+      "CategoryOption": "Domestic",
+      "Name": "test student",
+      "FatherName": "test father",
+      "MotherName": "test mother",
+      "lastscore": 78,
+      "DOB": "1992-11-12",
+      "documentOptions": {
+        "Domicile": true,
+        "Marksheets": true,
+        "Birth Certificate": true,
+        "Police Clearance": false,
+        "Passport": false,
+        "Declaration": true
+      },
+      "id": 9
     }
   ]
 }

@@ -87,9 +87,9 @@ export class RegistrationFormComponent implements OnInit {
               DOB: this.selectedStudent.DOB
             });
           }
-        }
-        else{
-          this.noStudent = true;
+          else{
+            this.noStudent = true;
+          }
         }
       });
     }
