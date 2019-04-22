@@ -85,12 +85,18 @@ export class APIService {
     const editStudent = students.filter((student)=>student.id===id)[0];
     const index=students.indexOf(editStudent);
     students.splice(index,1);
-
+    console.log(id);
+    try{
     return this.http.delete(this.baseUrl + this.studentsAPI + '/' + id).pipe(map((data) => { 
     
       window.localStorage.setItem(this.studentsAPI, JSON.stringify(students));
       return data;
     }));
+  }
+  catch(error){
+    console.log(error);
+    return of({});
+  }
    
   }
 
